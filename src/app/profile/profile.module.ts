@@ -8,6 +8,8 @@ import { ProfilePageRoutingModule } from './profile-routing.module';
 
 import { ProfilePage } from './profile.page';
 import { ShareModule } from '../share.module';
+//import { PhotoViewer} from '@ionic-native/photo-viewer/ngx'
+import { NgxIonicImageViewerModule } from 'ngx-ionic-image-viewer';
 
 @NgModule({
   imports: [
@@ -15,7 +17,9 @@ import { ShareModule } from '../share.module';
     FormsModule,
     IonicModule,
     ProfilePageRoutingModule,
-    ShareModule
+    ShareModule,
+    //PhotoViewer,
+    NgxIonicImageViewerModule
   ],
   declarations: [ProfilePage]
 })

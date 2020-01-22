@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
@@ -18,6 +18,10 @@ import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/firestor
 import { AuthService } from './auth.service';
 import { ShareModule} from './share.module'
 import { AngularFireFunctionsModule, FunctionsRegionToken} from '@angular/fire/functions'
+import { Keyboard } from '@ionic-native/keyboard/ngx';
+import { PhotoViewer} from '@ionic-native/photo-viewer/ngx'
+import { NgxIonicImageViewerModule } from 'ngx-ionic-image-viewer';
+import { IonicGestureConfig } from './IonicGestureConfig';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -29,7 +33,8 @@ import { AngularFireFunctionsModule, FunctionsRegionToken} from '@angular/fire/f
     HttpClientModule,
     AngularFirestoreModule,
     ShareModule,
-    AngularFireFunctionsModule
+    AngularFireFunctionsModule,
+    NgxIonicImageViewerModule
   ],
 
   providers: [
@@ -38,7 +43,12 @@ import { AngularFireFunctionsModule, FunctionsRegionToken} from '@angular/fire/f
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     UserService,
     AuthService,
-    { provide: FunctionsRegionToken, useValue: 'us-central1'}  
+    { provide: FunctionsRegionToken, useValue: 'us-central1'},
+    Keyboard,
+    PhotoViewer,{
+      provide: HAMMER_GESTURE_CONFIG,
+      useClass: IonicGestureConfig
+  },
   ],
   bootstrap: [AppComponent]
 })

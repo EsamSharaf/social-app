@@ -4,6 +4,7 @@ import { AuthService } from './auth.service'
 
 const routes: Routes = [
   { path: '', redirectTo: 'tabs', pathMatch: 'full' },
+
   {
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
@@ -16,7 +17,11 @@ const routes: Routes = [
     path: 'tabs',
     loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule),
     canActivate: [AuthService],
-  }
+  },//  {
+  // path: 'home',
+  //   loadChildren: () => import('./home/home.module').then( m => m.HomePageModule),
+  //   canActivate: [AuthService],
+  // }
 ]
 
 @NgModule({

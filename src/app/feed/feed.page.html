@@ -1,19 +1,21 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>feed</ion-title>
+    <ion-title>Feed</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  <div *ngIf="posts"></div>
-    <ion-card *ngFor="let post of  posts">
-        <ion-img src="https://ucarecdn.com/{{ post.postID }}/-/preview/{{ post.effect }}"></ion-img>
-        <ion-card-content>
-          <p>{{ post.desc }}</p>
-        </ion-card-content>
-        <ion-item (click)="toggleHeart()">
-          <ion-icon [name]="heartType"></ion-icon>
-        </ion-item>
-      </ion-card>
+<ion-content class="ion-padding">
+  <app-loading *ngIf="!posts"></app-loading>
+  
+  <div *ngIf="posts"> 
+    <div *ngFor="let post of posts">
+      <ion-card>
+        <ion-img src="https://ucarecdn.com/{{ post }}/-/resize/400x400//" (click)="goTo(post)"></ion-img>
 
+          <!-- <ion-item (click)="toggleHeart()">
+            <ion-icon [name]="heartType"></ion-icon>
+          </ion-item> -->
+      </ion-card>
+  </div>
+  </div>
 </ion-content>

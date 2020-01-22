@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef} from '@angular/core';
-import { IonTabs} from '@ionic/angular';
+import { IonTabs, MenuController} from '@ionic/angular';
 
 @Component({
   selector: 'app-tabs',
@@ -8,12 +8,15 @@ import { IonTabs} from '@ionic/angular';
 })
 export class TabsPage implements OnInit {
 
-  @ViewChild('tabs') tabs: IonTabs
-  //@ViewChild("tabs", { static: true }) tabs: ElementRef;
-  constructor() { }
+  @ViewChild('tabs', { static: true }) tabs: IonTabs;
+  
+  constructor(
+    private menuCtrl: MenuController,
+  ) { }
 
   ngOnInit() {
     this.tabs.select('feed')
+    this.menuCtrl.enable(true);
   }
 
 }

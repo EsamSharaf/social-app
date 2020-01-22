@@ -17,7 +17,7 @@ export class EditProfilePage implements OnInit {
 
   mainuser: AngularFirestoreDocument
   sub
-	username: string
+  username: string
   profilePic: string
 
   password: string
@@ -64,16 +64,17 @@ export class EditProfilePage implements OnInit {
 		const data = new FormData()
 		data.append('file', files[0])
 		data.append('UPLOADCARE_STORE', '1')
-		data.append('UPLOADCARE_PUB_KEY', 'aba46a927a034a47d1d2')
+		data.append('UPLOADCARE_PUB_KEY', '587d619576023678b14f')
 		
 		this.http.post('https://upload.uploadcare.com/base/', data)
-		.subscribe(event => {
+		.subscribe((event: any) => {
+			console.log("here",event.file)
 			const uuid = event.file
 			this.mainuser.update({
 				profilePic: uuid
 			})
 		})
-  }
+	}
   
   async presentAlert(title: string, content: string) {
 		const alert = await this.alertController.create({

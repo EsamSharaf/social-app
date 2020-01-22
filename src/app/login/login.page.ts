@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
 import {UserService} from '../user.service'
 import { Router } from '@angular/router';
+import { MenuController, NavController } from '@ionic/angular';
 
 
 @Component({
@@ -11,13 +12,29 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-
+  
   username: string = ""
   password: string = ""
+  
+  constructor(
+    public afAuth: AngularFireAuth, 
+    public user:UserService, 
+    public router:Router,
+    private menuCtrl: MenuController,
+    ) {
+      this.menuCtrl.enable(false);
 
-  constructor(public afAuth: AngularFireAuth, public user:UserService, public router:Router) { }
-
+     }
+    
+  
+  
   ngOnInit() {
+  }
+
+  ionViewWillLeave() {
+    this.username =""
+    this.password = ""
+
   }
 
   async login(){
@@ -34,6 +51,13 @@ export class LoginPage implements OnInit {
     } catch(err) { 
        console.dir(err)
     }
+  }
+
+
+
+  public createAccount() {
+    this.router.navigate(['/register']);
+
   }
 
 }

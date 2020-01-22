@@ -12,7 +12,7 @@
 
     <input type="file" #fileBtn class="filebtn" (change)="uploadPic($event)" />
 
-      <div>
+      <div style="margin-bottom: 20px;">
         <ion-img class="profile-pic" (click)="updateProfilePic()" src="https://ucarecdn.com/{{ profilePic }}/-/scale_crop/150x150/center/"></ion-img>
       </div>
 
@@ -31,6 +31,6 @@
         <ion-input [(ngModel)]="password"></ion-input>
       </ion-item>
 
-      <ion-button fill="solid" expand="block" color="dark" (click)="updateDetails()">Save</ion-button>
+      <ion-button fill="solid" expand="block" color="primary" (click)="updateDetails()">Save</ion-button>
   </div>
 </ion-content>

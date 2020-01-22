@@ -5,6 +5,11 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { HomePage } from './home.page';
+import { HomePageRoutingModule } from './home-routing.module';
+
+//import { LoginPage } from '../login/login.page'; //added 1 https://blog.flicher.net/ionic-4-user-registration-login-tutorial/ 
+import { RegisterPage } from '../register/register.page'; //added 1 
+
 
 @NgModule({
   imports: [
@@ -16,8 +21,10 @@ import { HomePage } from './home.page';
         path: '',
         component: HomePage
       }
-    ])
+    ]),
+    HomePageRoutingModule
   ],
-  declarations: [HomePage]
+  declarations: [HomePage, RegisterPage], //added 1 ..e , LoginPage, RegisterPage]
+  entryComponents: [ RegisterPage]    //added 1 entryComponents: [LoginPage, RegisterPage]
 })
 export class HomePageModule {}
